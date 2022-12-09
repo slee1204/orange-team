@@ -14,16 +14,15 @@ import ProfileBox from "../comps/ProfileBio";
 import FollowingBox from "../comps/FollowingBox";
 import SuggestedFollowingBox from "../comps/SuggestedFollowBox";
 
-
 const WholeCont = styled.div`
 display: flex;
 justify-content: flex-start;
 flex-direction: row;
 gap: 20px;
 align-content: flex-start;
-height: 100vh;
-width: fit-content;
-padding: 10px;
+width: 100vw;
+padding: 10px 20px;
+overflow: scroll;
 `
 
 const LeftCont = styled.div`
@@ -32,6 +31,7 @@ justify-content: flex-start;
 flex-wrap: wrap;
 height: fit-content;
 flex-direction: column;
+flex-grow: 1;
 `
 const MiddleCont = styled.div`
 display:flex;
@@ -41,12 +41,14 @@ flex-direction: column;
 height: 100%;
 justify-content: flex-start;
 gap: 20px;
+flex-grow: 4;
 `
 
 const RightCont = styled.div`
 display: flex;
 justify-content: flex-start;
 flex-direction: column;
+flex-grow:1;
 `
 
 export default function Login() {
@@ -60,8 +62,9 @@ export default function Login() {
       </LeftCont>
 
       <MiddleCont>
-        <div style={{ width: "650px" }}></div>
+        
         {/* Post Section Goes Here */}
+        <FollowingBox></FollowingBox>
       </MiddleCont>
 
       <RightCont>
