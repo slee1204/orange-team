@@ -1,15 +1,24 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+
 const firebaseConfig = {
-  apiKey: "AIzaSyC7yxXBhmdCFdBU8ckQxnoPyZ51pPtXgl8",
-  authDomain: "team-orange-692ea.firebaseapp.com",
-  projectId: "team-orange-692ea",
-  storageBucket: "team-orange-692ea.appspot.com",
-  messagingSenderId: "939310906005",
-  appId: "1:939310906005:web:cef89426b622e09a8ef99c"
+  apiKey: "AIzaSyDGRrLj9hoh6qy7SdVfI8IH4YwuzFzTZSM",
+  authDomain: "new-team-orange.firebaseapp.com",
+  projectId: "new-team-orange",
+  storageBucket: "new-team-orange.appspot.com",
+  messagingSenderId: "988424312484",
+  appId: "1:988424312484:web:67fb59b3d98b6cd134b831"
 };
 
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
+
+const firebaseApp = firebase.initializeApp(firebaseConfig)
+
+const db = firebaseApp.firestore()
+
+export default db
