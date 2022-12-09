@@ -10,7 +10,7 @@ import {
   signOut
 } from "firebase/auth";
 
-import { auth } from "../firebase/firebase.config"
+import { auth } from "../newfirebase/firebase.config"
 
 
 // Components
@@ -71,6 +71,9 @@ const InputCont = styled.div`
   align-items: center;
   width: 75%;
 
+  input {
+    width: 100%
+  }
 
   }
 `
@@ -91,7 +94,8 @@ const Button = styled.button`
   background-color: #F49842;
   border: none;
   text-align: center;
-  padding: 8px 110px;
+  width: 100%;
+  height: 30px;
   border-radius: 5px;
   margin: 10px 0;
   width: 100%;
