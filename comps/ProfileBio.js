@@ -1,12 +1,12 @@
 import styled from "styled-components"
 
-const ProfileBigBox = styled.div`
+export const BigBox = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-width: 360px;
-height: 500px;
+height: fit-content;
+padding: 30px 10px;
 border: 2px solid #F49842;
 border-radius: 10px;
 background-color: white;
@@ -26,10 +26,10 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-padding: 5%;
 `
 
 const ProfileGreyBox = styled.div`
+margin-top: 10px;
 padding: 40px 40px 40px 40px;
 background-color: #F2F2F2;
 border-radius: 10px;
@@ -37,27 +37,26 @@ width: 200px;
 `
 
 const ProfileUserPic = styled.div`
-width: 100px;
-height: 100px;
+width: 80px;
+height: 80px;
 background: black;
 border-radius: 50%;
 `
-const DisplayName = styled.div`
-font-size: 36px;
-font-weight: 800;
+const DisplayName = styled.h2`
 color: #F49842;
 font-family: Inter, sans-serif;
+
 `
 
-const HandleName = styled.div`
-font-size: 20px;
+const HandleName = styled.span`
+font-size: 18px;
 font-weight: 200;
 color: #7B7B7B;
 font-family: Inter, sans-serif;
 `
 
 const ProfileBox = () => (
-    <ProfileBigBox>
+    <BigBox>
         <ProfileUserPic></ProfileUserPic>
         <ProfileNameBox>
             <DisplayName>orangeteam</DisplayName>
@@ -70,6 +69,6 @@ const ProfileBox = () => (
                 Hello, I'm just an orange. yay
             </ProfileBio>
         </ProfileGreyBox>
-    </ProfileBigBox>)
+    </BigBox>)
 
 export default ProfileBox;
