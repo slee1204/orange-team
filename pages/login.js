@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components"
 import {
   signInWithPopup,
@@ -13,6 +13,7 @@ import { auth } from "../newfirebase/firebase.config"
 import ProfileBox from "../comps/ProfileBio";
 import FollowingBox from "../comps/FollowingBox";
 import SuggestedFollowingBox from "../comps/SuggestedFollowBox";
+import Feed from "../comps/Feed";
 
 const WholeCont = styled.div`
 display: flex;
@@ -43,7 +44,6 @@ justify-content: flex-start;
 gap: 20px;
 flex-grow: 4;
 `
-
 const RightCont = styled.div`
 display: flex;
 justify-content: flex-start;
@@ -62,9 +62,7 @@ export default function Login() {
       </LeftCont>
 
       <MiddleCont>
-        
-        {/* Post Section Goes Here */}
-        <FollowingBox></FollowingBox>
+        <Feed></Feed>
       </MiddleCont>
 
       <RightCont>
