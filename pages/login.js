@@ -9,7 +9,7 @@ import {
   signOut
 } from "firebase/auth";
 
-import { auth } from "../firebase/firebase.config"
+import { auth } from "../newfirebase/firebase.config"
 import ProfileBox from "../comps/ProfileBio";
 import FollowingBox from "../comps/FollowingBox";
 import SuggestedFollowingBox from "../comps/SuggestedFollowBox";
