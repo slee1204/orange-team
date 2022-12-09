@@ -201,7 +201,7 @@ export default function Home() {
 
     const authorization = auth;
     const result = await signInWithPopup(authorization, provider);
-
+    r.push("/login")
     console.log(result)
   }
 
