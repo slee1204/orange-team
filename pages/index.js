@@ -10,7 +10,8 @@ import {
   signOut
 } from "firebase/auth";
 
-import { auth } from "../newfirebase/firebase.config"
+import db, { auth } from "../newfirebase/firebase.config"
+import { setDoc, doc } from "firebase/firestore";
 
 
 // Components
@@ -160,7 +161,12 @@ export default function Home() {
       setRegisterEmail("");
       setRegisterPassword("");
       const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
-      console.log(user);
+      console.log(user.user.uid);
+      db.collection("newuser").add({
+        uid:user.user.uid,
+        email: loginEmail,
+        password: loginPassword
+      })
     } catch(error) {
       console.log(error.message)
     }
@@ -182,7 +188,8 @@ export default function Home() {
   const LogIn = async () => {
     try{
       const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-      console.log(user);
+      // const docRef = doc(db, "userdata", user.user.uid)
+      console.log(user.user.uid);
       r.push("/login")
     } catch(error) {
       console.log(error.message)
@@ -201,6 +208,11 @@ export default function Home() {
 
     const authorization = auth;
     const result = await signInWithPopup(authorization, provider);
+    db.collection("newuser").onSnapshot({
+      uid:user.user.uid,
+      email: loginEmail,
+      password: loginPassword
+    })
     r.push("/login")
     console.log(result)
   }
