@@ -2,6 +2,8 @@ import styled from "styled-components"
 import { BigBox } from "./ProfileBio";
 import Follower from "./Followers";
 import { FollowingTitle } from "./FollowingBox";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { useEffect, useState } from "react";
 
 // const SugFollowBoxCont = styled.div`
 // width: 300px;
@@ -26,19 +28,33 @@ import { FollowingTitle } from "./FollowingBox";
 // import SugFollow from "../comps/Suggested";
 
 export default function SuggestedFollowingBox ({
-    header="Following Suggestion"
+    header="Following Suggestion", 
 }){
-    return(
+
+  const db = getFirestore();
+
+  const [users, setUsers] = useState([]);
+
+const GetFollowers = async() => {
+  const querySnapshot = await getDocs(collection(db, "users"));
+  const dbusers = [];
+  querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data());
+      dbusers.push({...doc.data(), id:doc.id});
+      setUsers([...dbusers]);
+  });
+}
+
+  useEffect ( () => {
+GetFollowers();
+  },[]);
+// shows the data collection "users"
+
+return(
         <BigBox>
         <FollowingTitle>{header}</FollowingTitle>
-        <Follower
-        name="test1"
-        handle="@test1"
-        button="test1"
-        />
-        <Follower />
-        <Follower />
-
+        {users.map((o=><Follower
+        name={o.username} handle={o.username}/>))}
     </BigBox>
     )
 }

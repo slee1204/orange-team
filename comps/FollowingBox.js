@@ -30,11 +30,12 @@ margin:0;
 import Follower from "../comps/Followers";
 
 
-export default function FollowingBox ({header="Following"}){
+export default function FollowingBox ({header="Following"}){ 
+
     return(
         <BigBox>
             <FollowingTitle>{header}</FollowingTitle>
-            <Follower
+        <Follower
             name="test1"
             handle="@test1"
             button="test1"

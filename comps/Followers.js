@@ -1,4 +1,8 @@
 import styled from "styled-components"
+import { useState } from "react"
+import { doc, setDoc, getFirestore } from "firebase/firestore"
+import db from '../newfirebase/firebase.config';
+
 
 const FollowedUserBox = styled.div`
 padding: 15px 10px;
@@ -58,24 +62,36 @@ font-size: 12px;
 `
 
 
-export default function Follower ({
-    name="brickabrak woo",
-    handle="@brickabrak",
-    button="Unfollow"
+export default function Follower({
+    name = "brickabrak woo",
+    handle = "@brickabrak",
+    button = 'follow',
+    unfollow = 'unfollow'
+}) {
 
-}){
-    return (
-        <FollowedUserBox>
-           <FollowingUsers>
-                <FollowedUserPic />
-                <FollowedUserDetails>
-                    <FollowedDisplay>{name}</FollowedDisplay>
-                    <FollowedHandle>{handle}</FollowedHandle>
-                </FollowedUserDetails>
-            </FollowingUsers>
-            <FollowedUserButton>{button}</FollowedUserButton>
-            
-        </FollowedUserBox>
-    )
+//     const getFollowStatus = async () => {
+//         // const myself = getAuth();
+//         const followRef = doc(db, 'users', 'Following');
+// setDoc(followRef, { following: true }, { merge: true });
+//         setFollow(!follow);
+//         console.log(followRef.id);
+//     }
+//     // bad..
+
+
+    const [follow, setFollow] = useState(false);
+
+    return <FollowedUserBox>
+        <FollowingUsers>
+            <FollowedUserPic />
+            <FollowedUserDetails>
+                <FollowedDisplay>{name}</FollowedDisplay>
+                <FollowedHandle>{handle}</FollowedHandle>
+            </FollowedUserDetails>
+        </FollowingUsers>
+        <FollowedUserButton onClick={()=>setFollow(!follow)}>{follow ? unfollow : button}</FollowedUserButton>
+
+    </FollowedUserBox>
+
 }
 
